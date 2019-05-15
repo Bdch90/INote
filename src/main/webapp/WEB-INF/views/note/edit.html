@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update blog</title>
+</head>
+<body>
+<p align="center"><a href="/home">Back to home</a></p>
+<th:block th:if="${message}">
+    <p th:text="${message}" th:align="center"></p>
+</th:block>
+<form th:action="@{/edit-note}" th:object="${note}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}" th:align="center">
+    <table th:align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>Content</td>
+            <td><input type="text" th:field="*{content}"></td>
+        </tr>
+        <tr>
+            <td><select th:field="*{type}">
+                <option th:each="type :${types}" th:value="${type.id}" th:text="${type.name}"></option>
+            </select></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Edit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

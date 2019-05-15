@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create type</title>
+</head>
+<body>
+<h1 align="center">Create type</h1>
+<p align="center"><a href="/home">Back to home</a></p>
+<p align="center"><a href="/type/list-type">Back to type list</a></p>
+<th:block th:if="${message}" >
+    <p th:text="${message}" th:align="center"></p>
+</th:block>
+<form th:action="@{/type/create-type}" th:object="${type}" method="post">
+    <table th:align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
